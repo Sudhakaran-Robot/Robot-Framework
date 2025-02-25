@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.13.2 on win32)" generated="2025-02-25T14:22:19.558108" rpa="false" schemaversion="5">
+<suite id="s1" name="MainTest" source="c:\Users\NSSudhakaran\Frameworks\Robot_framework\MainTest.robot">
+<test id="s1-t1" name="Login And Search Product" line="8">
+<kw name="Login" owner="Keywords">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-02-25T14:22:20.002990" level="WARN">exexcutable_path is being deprecated. Please use service to configure the driver's executable_path as per documentation.</msg>
+<msg time="2025-02-25T14:22:20.007155" level="INFO">Opening browser 'chrome' to base url 'https://www.saucedemo.com/'.</msg>
+<arg>${URL}</arg>
+<arg>${Browser}</arg>
+<arg>executable_path=${ChromedriverPath}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-02-25T14:22:20.002573" elapsed="2.854671"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-02-25T14:22:22.859446" elapsed="0.045334"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-02-25T14:22:22.905873" level="INFO">Typing text 'standard_user' into text field '//input[@id='user-name']'.</msg>
+<arg>${username}</arg>
+<arg>${USERNAME_data}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-25T14:22:22.905219" elapsed="0.250193"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-02-25T14:22:23.156099" level="INFO">Typing text 'secret_sauce' into text field '//input[@id='password']'.</msg>
+<arg>${password}</arg>
+<arg>${PASSWORD_data}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-25T14:22:23.155758" elapsed="0.097325"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-02-25T14:22:23.253854" level="INFO">Clicking button '//input[@id='login-button']'.</msg>
+<arg>${login}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-25T14:22:23.253466" elapsed="0.125956"/>
+</kw>
+<status status="PASS" start="2025-02-25T14:22:20.001363" elapsed="3.378412"/>
+</kw>
+<kw name="Verify product Page" owner="Keywords">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-02-25T14:22:23.594210" level="INFO">Element '//span[normalize-space(text())='Products']' is displayed.</msg>
+<arg>${Product_page}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-02-25T14:22:23.382523" elapsed="0.212067"/>
+</kw>
+<msg time="2025-02-25T14:22:23.594915" level="INFO">${present} = True</msg>
+<var>${present}</var>
+<arg>Element Should Be Visible</arg>
+<arg>${Product_page}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-02-25T14:22:23.381924" elapsed="0.213140"/>
+</kw>
+<status status="PASS" start="2025-02-25T14:22:23.381216" elapsed="0.214056"/>
+</kw>
+<kw name="Search product" owner="Keywords">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-02-25T14:22:23.622128" level="INFO">Element '//div[normalize-space(text())='Sauce Labs Backpack']' is displayed.</msg>
+<arg>//div[normalize-space(text())='${Product_type}']</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-02-25T14:22:23.597178" elapsed="0.025139"/>
+</kw>
+<msg time="2025-02-25T14:22:23.622467" level="INFO">${present} = True</msg>
+<var>${present}</var>
+<arg>Element Should Be Visible</arg>
+<arg>//div[normalize-space(text())='${Product_type}']</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-02-25T14:22:23.596742" elapsed="0.025779"/>
+</kw>
+<if>
+<branch type="IF" condition="&quot;${present}&quot; == &quot;True&quot;">
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>//div[normalize-space(text())='${Product_type}']</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" start="2025-02-25T14:22:23.623346" elapsed="0.397454"/>
+</kw>
+<status status="PASS" start="2025-02-25T14:22:23.622681" elapsed="0.398419"/>
+</branch>
+<status status="PASS" start="2025-02-25T14:22:23.622644" elapsed="0.398614"/>
+</if>
+<arg>${PRODUCT}</arg>
+<status status="PASS" start="2025-02-25T14:22:23.596173" elapsed="0.425188"/>
+</kw>
+<kw name="Add to cart" owner="Keywords">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-02-25T14:22:24.079678" level="INFO">${new_product} = sauce-labs-backpack</msg>
+<var>${new_product}</var>
+<arg>"${Product_type}".replace(" ", "-").lower()</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-02-25T14:22:24.079150" elapsed="0.000706"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-02-25T14:22:24.080432" level="INFO">Clicking element '//button[contains(@id,'sauce-labs-backpack')]'.</msg>
+<arg>//button[contains(@id,'${new_product}')]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-25T14:22:24.080093" elapsed="0.699589"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-02-25T14:22:24.780516" level="INFO">Clicking element '//div[@id='shopping_cart_container']'.</msg>
+<arg>${Cart}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-25T14:22:24.780058" elapsed="0.139718"/>
+</kw>
+<arg>${PRODUCT}</arg>
+<status status="PASS" start="2025-02-25T14:22:24.077810" elapsed="0.842256"/>
+</kw>
+<kw name="Verify Cart" owner="Keywords">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-02-25T14:22:24.948708" level="INFO">Element '//div[normalize-space(text())='Sauce Labs Backpack']' is displayed.</msg>
+<arg>//div[normalize-space(text())='${Product_type}']</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-02-25T14:22:24.922665" elapsed="0.026934"/>
+</kw>
+<msg time="2025-02-25T14:22:24.950471" level="INFO">${present} = True</msg>
+<var>${present}</var>
+<arg>Element Should Be Visible</arg>
+<arg>//div[normalize-space(text())='${Product_type}']</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-02-25T14:22:24.922118" elapsed="0.028683"/>
+</kw>
+<arg>${PRODUCT}</arg>
+<status status="PASS" start="2025-02-25T14:22:24.921169" elapsed="0.030405"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-02-25T14:22:24.952980" elapsed="2.382186"/>
+</kw>
+<status status="PASS" start="2025-02-25T14:22:20.000381" elapsed="7.338841"/>
+</test>
+<status status="PASS" start="2025-02-25T14:22:19.562540" elapsed="7.781906"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="MainTest" id="s1" pass="1" fail="0" skip="0">MainTest</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-02-25T14:22:20.002990" level="WARN">exexcutable_path is being deprecated. Please use service to configure the driver's executable_path as per documentation.</msg>
+</errors>
+</robot>
